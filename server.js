@@ -29,16 +29,32 @@ server.post('/videos' , (request , reply) => {
 
     console.log(database.list())
 
-    return reply.status(201).send()
+    return reply.status(201).send("Vídeo criado com sucesso!")
 })
 server.get('/videos' , () => {
-    return 'Hello World'
+    const videos = database.list()
+
+
+    return videos
 })
-server.put('/videos/:id' , () => {
-    return 'Hello World'
+server.put('/videos/:id', (request, reply) => {
+    const videoId = request.params.id
+    const { titulo, descricao, duracao } = request.body
+
+    database.update(videoId , {
+        titulo , 
+        descricao , 
+        duracao
+    } )
+
+    return reply.status(204).send("Vídeo Atualizado com sucesso")
 })
 server.delete('/videos/:id' , () => {
-    return 'Hello World'
+    const videoId = request.params.id
+
+    database.delete(videoId)
+
+    return reply.status(204).send()
 })
 
 server.listen({

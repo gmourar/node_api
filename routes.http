@@ -7,3 +7,22 @@ Content-Type: application/json
     "descricao": "Esse é o primeiro video do canal",
     "duracao": 180
 }
+
+
+###
+
+
+GET http://localhost:3333/videos
+
+
+###
+
+PUT http://localhost:3333/videos/2b557cee-6e61-42a6-96f6-89e29d1a073e
+Content-Type: application/json 
+
+
+{
+    "titulo": "Video 02",
+    "descricao": "Esse é o segundo video do canal!",
+    "duracao": 120
+}
